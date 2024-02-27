@@ -6,9 +6,10 @@ package repository;
 
 
 import model.Facility;
+import model.Villa;
 import model.Booking;
 import service.*;
-import java.awt.font.LineBreakMeasurer;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -33,25 +34,28 @@ public class BookingRepository {
         this.listBooking = listBooking;
     }
 
-    static String bookingPath = "DataBooking.txt";
+    static String bookingPath = "data\\DataBooking.txt";
     Map<Facility, Integer> bill = new HashMap<>();
 
     public void loadBooking() throws IOException, ParseException {
         BookingService bs = new BookingService();
         listBooking.clear();
         Booking b;
-        FacilityService fc = new FacilityService();
+        FacilityService fs = new FacilityService();
         try {
             BufferedReader br = new BufferedReader(new FileReader(bookingPath));
             String line;
             while ((line = br.readLine()) != null) {
+                System.out.println(line);
                 String[] linearr = line.trim().split(",");
-                Facility r = fc.searchFacility((linearr[5].trim()));
+                Facility r = fs.searchFacility((linearr[5].trim()));
+                Facility rr = new Villa("SVVL-0001","Villa 1",600, 2000, 10, "Villa", "luxury", "80", "4");
+        
                 bill.put(r, Integer.valueOf(linearr[6].trim()));
                 b = new Booking(linearr[0], bs.checkdate(linearr[1]), bs.checkdate(linearr[2]), bs.checkdate(linearr[3]), linearr[4], bill);
                 listBooking.add(b);
             }
-
+            System.out.println(listBooking);
             br.close();
         } catch (IOException e) {
             System.out.println("Input invalid !");
