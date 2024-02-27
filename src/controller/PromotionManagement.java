@@ -2,6 +2,10 @@ package controller;
 
 import service.BookingService;
 import service.FacilityService;
+
+import java.io.IOException;
+import java.text.ParseException;
+
 import repository.PromotionRepository;
 import view.Menu;
 
@@ -27,11 +31,11 @@ public class PromotionManagement extends Menu {
     public void execute(int n) throws ParseException, IOException {
         switch (n){
             case 1 ->{ //"Display list customers use service"
-                pr.showCusService();
+                // pr.showCusService();
             }
             
             case 2 ->{ //"Display list customers get voucher"
-                pr.giveVoucher();
+                // pr.giveVoucher();
             }
             
             case 3 ->{ // "Return main menu"

@@ -2,7 +2,12 @@ package view;
 
 import java.io.IOException;
 import java.text.ParseException;
+
+import controller.BookingManagement;
 import controller.FuramaController;
+import model.Booking;
+import repository.BookingRepository;
+import service.BookingService;
 
 
 
@@ -15,6 +20,9 @@ public class Test {
                           "Promotion Management",
                           "Exit"};
         FuramaController furamaController = new FuramaController("-------------------- MAIN MENU --------------------",mchon);
-        furamaController.run();
+        //furamaController.run();
+        BookingService bs = new BookingService();
+        BookingRepository br = new BookingRepository(bs.listBooking);
+        br.loadBooking();
     }
 }

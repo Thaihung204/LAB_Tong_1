@@ -36,7 +36,7 @@ public class FacilityService {
         listFacility.clear();
         listFacility = FacilityRepository.readFile();
         for (Facility f : listFacility) {
-            if (f.getId().equals(id)) {
+            if (f.getId().equalsIgnoreCase(id)) {
                 return f;
             }
         }
