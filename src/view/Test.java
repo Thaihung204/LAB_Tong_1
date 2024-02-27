@@ -4,15 +4,19 @@
  */
 package view;
 
-import controller.FacilityManagement;
+import java.text.ParseException;
+
+// import controller.FacilityManagement;
 import controller.FuramaController;
+import model.Booking;
+import service.BookingService;
 
 /**
  *
  * @author DELL
  */
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 //        String[] mchon = {"Display list facility",
 //                          "Add new facility",
 //                          "Edit facility maintenance",
@@ -28,6 +32,8 @@ public class Test {
                           "Exit"};
         FuramaController furamaController = new FuramaController("---------- MENU ----------",mchon);
         furamaController.setParentMenu(furamaController.parentMenu);
-        furamaController.run();
+        //furamaController.run();
+        BookingService bs = new BookingService();
+        bs.addBooking();
     }
 }
