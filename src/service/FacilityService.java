@@ -185,7 +185,7 @@ public class FacilityService {
     }
 
     public void displayFacilityMaintainence() throws IOException {
-        FacilityRepository facilityRepository = new FacilityRepository();
+        FacilityRepository facilityRepository = new FacilityRepository(listFacility);
         facilityRepository.addDataFromList(FacilityRepository.readFile());
         facilityRepository.printFacilityMap();
     }

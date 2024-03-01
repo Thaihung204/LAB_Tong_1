@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import model.Booking;
 import model.Facility;
 import model.House;
 import model.Room;
@@ -23,8 +25,9 @@ import service.BookingService;
 public class FacilityRepository {
 
     private LinkedHashMap<Facility, Integer> facilityMap = new LinkedHashMap<>();
-    
-    public FacilityRepository() {
+    List<Facility> listFacility = new ArrayList();
+    public FacilityRepository(List<Facility> listFacility) {
+        this.listFacility=listFacility;
     }
 
     public LinkedHashMap<Facility, Integer> getFacilityMap() {
@@ -41,7 +44,7 @@ public class FacilityRepository {
         }
     }
 
-    ;
+    
     
     public void printFacilityMap() {
         
@@ -63,6 +66,35 @@ public class FacilityRepository {
         }
         System.out.println(
                 "+----------------------------------------------------+");
+    }
+    //hung viet
+    String facilityPath = "DataFacility.txt";
+    
+    public void readFacility(){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(facilityPath));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String[] linearr = line.trim().split(",");
+                Facility facility;
+                String reget = linearr[0].split("=")[1];
+                if (reget.contains("VL")){
+                    facility = new Villa(reget, linearr[1].split("=")[1], Integer.parseInt(linearr[2].split("=")[1]), Long.parseLong(linearr[3].split("=")[1]), Integer.parseInt(linearr[4].split("=")[1]), linearr[5].split("=")[1], linearr[6].split("=")[1], linearr[7].split("=")[1], linearr[8].split("=")[1]);
+                } else if (reget.contains("HO")){
+                    facility = new House(reget, linearr[1].split("=")[1], Integer.parseInt(linearr[2].split("=")[1]), Long.parseLong(linearr[3].split("=")[1]), Integer.parseInt(linearr[4].split("=")[1]), linearr[5].split("=")[1], linearr[6].split("=")[1], linearr[7].split("=")[1]);
+                } else {
+                    facility = new Room(reget, linearr[1].split("=")[1], Integer.parseInt(linearr[2].split("=")[1]), Long.parseLong(linearr[3].split("=")[1]), Integer.parseInt(linearr[4].split("=")[1]), linearr[5].split("=")[1], linearr[6].split("=")[1]);
+                }
+                listFacility.add(facility);
+            }
+            System.out.println(listFacility);
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Input invalid !");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format !");
+        }
     }
 
     public static List<Facility> readFile() throws FileNotFoundException, IOException {

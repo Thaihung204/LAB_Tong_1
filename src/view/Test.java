@@ -20,9 +20,9 @@ public class Test {
                           "Promotion Management",
                           "Exit"};
         FuramaController furamaController = new FuramaController("-------------------- MAIN MENU --------------------",mchon);
-        //furamaController.run();
-        BookingService bs = new BookingService();
-        BookingRepository br = new BookingRepository(bs.listBooking);
-        br.loadBooking();
+        furamaController.run();
+        // BookingService bs = new BookingService();
+        // BookingRepository br = new BookingRepository(bs.listBooking);
+        // br.loadBooking();
     }
 }
