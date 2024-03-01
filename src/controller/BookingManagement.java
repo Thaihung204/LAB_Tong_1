@@ -3,15 +3,21 @@ package controller;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.FuramaController;
 
 import service.BookingService;
 import view.Menu;
 
 /**
  *
+<<<<<<< HEAD
  * @author Hung
+=======
+ * @author Huydeptraiabc
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
+ * @param <FuramaController>
  */
-public class BookingManagement extends Menu {
+public class BookingManagement<FuramaController> extends Menu {
     
     BookingService bookingService = new BookingService();
     FuramaController parentMenu; // Thêm thuộc tính để lưu trữ menu cha

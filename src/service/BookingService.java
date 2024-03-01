@@ -25,13 +25,20 @@ public class BookingService {
     public TreeSet<Booking> listBooking = new TreeSet<>();
     Queue<Booking> bookingBill = new LinkedList<>();
     ArrayList<Constract> listConstract = new ArrayList<>();
+<<<<<<< HEAD
     static LinkedHashMap<Facility, Integer> bill = new LinkedHashMap<>();
 //    FacilityRepository fr = new FacilityRepository();
     Map<Booking, Integer> oorder = new HashMap<>();  //luu cac phong trong 1 don
+=======
+    Map<Facility, Integer> bill = new HashMap<>();
+    Map<Booking, Integer> oorder = new HashMap<>();  //luu cac phong tromg 1 don
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
     Scanner in = new Scanner(System.in);
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     CustomerService customerService = new CustomerService();
+    FacilityService fc = new FacilityService();
+
     FacilityService fc = new FacilityService();
 
     public BookingService() {
@@ -48,9 +55,13 @@ public class BookingService {
     
 
     public void readInf() throws ParseException {
+<<<<<<< HEAD
         
         Facility r = new Villa("SVVL-0001","Villa 1",600, 2000, 10, "Villa", "luxury", "80", "4");
     
+=======
+        Facility r = fc.searchFacility("RO001");
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
         System.out.println(r);
         bill.put(r, 2);
         listBooking.add(new Booking("0001", checkdate("20/2/2024"), checkdate("21/2/2024"), checkdate("25/2/2024"), "KH-0001", bill));
@@ -89,10 +100,14 @@ public class BookingService {
                 System.out.println("Please input checkout date after checkin");
             }
         } while (checkoutDate.before(checkinDate));
+<<<<<<< HEAD
 
         //------display customer id ...... code phuc
         customerService.displayList();
 
+=======
+        //------display customer id ......
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
         System.out.println("Input customer Id: ");
         customerId = in.nextLine();
         do {
@@ -109,18 +124,31 @@ public class BookingService {
             bill.put(f, quan);
             in.nextLine();
 
+<<<<<<< HEAD
+=======
+            in.nextLine();
+
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
         } while (confirm("continute booking"));
         Booking b = new Booking(bookingId, now, checkinDate, checkoutDate, customerId, bill);
         listBooking.add(b);
         //System.out.println(b);
         System.out.println("Booking complete successful!");
+<<<<<<< HEAD
         displayBooking(b.getBookingId());
+=======
+        System.out.println("Your Booking ID is: " + bookingId);
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
         //bill.clear();
         //------display room inf
     }
 //------------------------------------------------------------------------------ 
 
+<<<<<<< HEAD
     int caculateTotal(String bookingId) {
+=======
+    public int caculateTotal(String bookingId) {
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
         int total = 0;
         Booking b = searchBooking(bookingId);
         Map<Facility, Integer> bill = b.getBill();

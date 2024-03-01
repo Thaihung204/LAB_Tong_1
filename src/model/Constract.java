@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 
 package model;
 
+=======
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package model;
+
+/**
+ *
+ * @author mb
+ */
+>>>>>>> 019e9ec882a50b135a93c7e190bd62f648a8e431
 public class Constract {
     private String constractId;
     private String bookingId;
